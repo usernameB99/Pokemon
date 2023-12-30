@@ -20,7 +20,6 @@ public class Attack {
         this.pp = pp;
     }
 
-
     public int getId() {
         return id;
     }
