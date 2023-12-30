@@ -7,13 +7,11 @@ import java.util.Random;
 
 public class Pokedex {
 
-   // private static final double DAMAGECALCULATIONRATIO = 1/25.0;
     private static Random randomizer = new Random();
 
     public static final String CSVPOKEMON = "C:/Users/Codersbay/IdeaProjects/Pokemon/src/2023-03-13-Pokemon.csv";
 
     public static final String CSVATTACK = "C:/Users/Codersbay/IdeaProjects/Pokemon/src/2023-04-03-Attacks.csv";
-
 
     public HashMap<Integer, Attack> attackMap = new HashMap<>();
 
@@ -23,14 +21,10 @@ public class Pokedex {
 
     public void loadPokemon() {
 
-       // HashMap<Integer, Pokemon> pokeMap = new HashMap<>();
-
         try {
             loadAttacks();
         } catch (IOException e) {
             System.out.println("Load Attacks went wrong .. :(");
-            //sout(e.getMessage())
-            //Compiler: e.printStackTrace() -> rote Message in der Konsole
         }
 
         BufferedReader pkmnReader = null;
@@ -46,7 +40,6 @@ public class Pokedex {
             throw new RuntimeException(e);
         }
 
-
         String currentLine;
         try {
             currentLine = pkmnReader.readLine();
@@ -54,9 +47,8 @@ public class Pokedex {
             throw new RuntimeException(e);
         }
 
-
         while (currentLine != null) {
-
+           
             String[] currPkmnData = currentLine.split(";");
 
             if (currPkmnData.length <= 11) {
@@ -92,8 +84,6 @@ public class Pokedex {
         }
     }
 
-
-
     public void loadAttacks() throws IOException {  //loadAttacksFromCsv
 
         BufferedReader attackReader = new BufferedReader(new FileReader(CSVATTACK));
@@ -119,72 +109,6 @@ public class Pokedex {
             }
         }
     }
-
-
-//    public void checkHps(Pokemon playerPokemon, Pokemon cpuPokemon){    //verbesserung: kampf relevante methoden in battle
-//
-//        System.out.println("- " + playerPokemon.getPokemonName() + " HP = " + playerPokemon.getHp() + " | " + cpuPokemon.getPokemonName() +  " HP = " + cpuPokemon.getHp() + " -");
-//
-//        if(playerPokemon.getHp() <= 0){
-//            System.out.println("computer won");
-//            //printPikachu();
-//            System.exit(0);
-//        }
-//        else if (cpuPokemon.getHp() <= 0){
-//            System.out.println("player won");
-//            //printPikachu();
-//            System.exit(0);
-//        }
-//
-//    }
-
-
-//    public void calculateDamageByCpu(Pokemon playerPokemon, Pokemon cpuPokemon){
-//
-//        Random r = new Random();
-//        int randomAttack = r.nextInt(2) +1;
-//        double power;
-//        double attack = cpuPokemon.getAttack();
-//        double defense = playerPokemon.getDefense();
-//        double hp = playerPokemon.getHp();
-//
-//        if (randomAttack == 1){
-//            power = cpuPokemon.getPrimaryAttack().getPower();
-//            System.out.println(cpuPokemon.getPokemonName() + " uses " + cpuPokemon.getPrimaryAttack().getAttackName());
-//        } else{
-//            power = cpuPokemon.getSecondaryAttack().getPower();
-//            System.out.println(cpuPokemon.getPokemonName() + " uses " + cpuPokemon.getSecondaryAttack().getAttackName());
-//        }
-//        double damage = power * (attack / defense) * DAMAGECALCULATIONRATIO;
-//        hp -= damage;
-//        playerPokemon.setHp((int)hp);
-//    }
-
-
-//    public void calculateDamageByPlayer(Pokemon playerPokemon, Pokemon cpuPokemon, int chosenAttack){
-//
-//        double power;
-//        double attack = playerPokemon.getAttack();
-//        double defense = cpuPokemon.getDefense();
-//        double hp = cpuPokemon.getHp();
-//
-//        if (chosenAttack == 1){
-//            power = playerPokemon.getPrimaryAttack().getPower();
-//            System.out.println(playerPokemon.getPokemonName() + " uses " + playerPokemon.getPrimaryAttack().getAttackName());
-//        }
-//        else  {
-//            power = playerPokemon.getSecondaryAttack().getPower();
-//            System.out.println(playerPokemon.getPokemonName() + " uses " + playerPokemon.getSecondaryAttack().getAttackName());
-//        }
-//
-//        double damage = power * (attack / defense) * DAMAGECALCULATIONRATIO;
-//
-//        //hp - damage = leftover hp
-//        hp -= damage;
-//        cpuPokemon.setHp((int)hp);
-//    }
-
-
 
     public static boolean isNumber(String input) {
         try {
@@ -217,17 +141,12 @@ public class Pokedex {
         int randomIndex = -1;
         try {
             randomIndex = r.nextInt(pokeMap.size());
-           // System.out.println("randomIndex = " + randomIndex);
             return pokeMap.get(randomIndex).clone();
         } catch (Exception e) {
             System.out.println("Hier ist was schiefgegangen"); // Textmessage -> kein Abbruch
-            // System.out.println(e.getMessage());
-            // System.out.println(e.getCause());
-            // e.printStackTrace(); //rote Nachricht in der Konsole -> Abbruch
             return null;
         }
     }
-
 
     public void printPokemonList(){
 
@@ -237,8 +156,6 @@ public class Pokedex {
             Pokemon pokemon = pokeMap.get(key);
             String pokemonName = pokemon.getPokemonName();
 
-            //System.out.println(key + " - " + pokemonName);
-
             System.out.printf("%-4s - %-12s", key, pokemonName);
             count++;
 
@@ -246,14 +163,7 @@ public class Pokedex {
                 System.out.println();
             }
         }
-
-
-
-
-
     }
-
-
 
     public void printStart(){
 
@@ -271,9 +181,6 @@ public class Pokedex {
         System.out.println("                                                                     `'                            '-._|");
         System.out.println(         );
     }
-
-
-
 
 public void printPikachu(){
 
