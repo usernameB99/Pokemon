@@ -10,15 +10,10 @@ public class Battle {
         Pokedex pokedex = new Pokedex();
         pokedex.loadPokemon();
         Scanner sc = new Scanner(System.in);
-        //int chosenAttack;
         boolean cont = true;
-
-
         Battle battle = new Battle();
 
         System.out.println("|");
-
-        //pokedex.printPikachu();
 
         do {
 
@@ -69,43 +64,6 @@ public class Battle {
         } while (cont);
         System.out.println("Player one has left the Arena...");
         pokedex.printPikachu();
-
-//        if (pokedex.playerFirst(playerPokemon, cpuPokemon)){               //verbesserung: a=cpu b=player oder b=cpu a =player
-//            System.out.println("     - - - Player begins - - -");
-//
-//            do {
-//                System.out.println("* choose your attack");
-//                System.out.println("Attack 1: " + playerPokemon.getPrimaryAttack().getAttackName() + " power: " + playerPokemon.getPrimaryAttack().getPower());
-//                System.out.println("Attack 2: " + playerPokemon.getSecondaryAttack().getAttackName() + " power: " + playerPokemon.getSecondaryAttack().getPower());
-//                chosenAttack = sc.nextInt();
-//
-//                pokedex.calculateDamageByPlayer(playerPokemon, cpuPokemon, chosenAttack);  //player attacks
-//
-//                pokedex.checkHps(playerPokemon, cpuPokemon);                               // check hp
-//
-//                pokedex.calculateDamageByCpu(playerPokemon, cpuPokemon);                  // cpu attacks
-//
-//                pokedex.checkHps(playerPokemon, cpuPokemon);                              // check hp
-//
-//            } while (cont);
-//        } else {
-//            System.out.println("     - - - cpu begins - - -");
-//
-//            do {
-//                pokedex.calculateDamageByCpu(playerPokemon, cpuPokemon);                  // cpu attacks
-//                pokedex.checkHps(playerPokemon, cpuPokemon);                              // check hp
-//
-//                System.out.println("* choose your attack");
-//                System.out.println("Attack 1: " + playerPokemon.getPrimaryAttack().getAttackName() + " | power: " + playerPokemon.getPrimaryAttack().getPower());
-//                System.out.println("Attack 2: " + playerPokemon.getSecondaryAttack().getAttackName() + " | power: " + playerPokemon.getSecondaryAttack().getPower());
-//
-//                chosenAttack = sc.nextInt();
-//                pokedex.calculateDamageByPlayer(playerPokemon, cpuPokemon, chosenAttack);  //player attacks
-//
-//                pokedex.checkHps(playerPokemon, cpuPokemon);                               // check hp
-//
-//            } while (cont);
-//        }
     }
 
     public boolean checkHps(Pokemon playerPokemon, Pokemon cpuPokemon){    //verbesserung: kampf relevante methoden in battle
@@ -121,7 +79,6 @@ public class Battle {
             return false;
         }
         return true;
-
     }
 
     public int randomAttack(){
@@ -129,7 +86,6 @@ public class Battle {
         int randomAttack = r.nextInt(2) + 1;
         return randomAttack;
     }
-
 
     public void calculateDamage(Pokemon attackingPokemon, Pokemon defendingPokemon,int chosenAttack) {
 
@@ -148,13 +104,11 @@ public class Battle {
             double damage = power * (attack / defense) * (1/10.0);
             hp -= damage;
             defendingPokemon.setHp((int) hp);
-
-
     }
 
     public int chooseAttack(Pokemon pokemon){
         Scanner sc = new Scanner(System.in);
-
+        
         System.out.println("* choose your attack");
         System.out.println("Attack 1: " + pokemon.getPrimaryAttack().getAttackName() + " power: " + pokemon.getPrimaryAttack().getPower());
         System.out.println("Attack 2: " + pokemon.getSecondaryAttack().getAttackName() + " power: " + pokemon.getSecondaryAttack().getPower());
